@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.vims.dao.CustomerDao;
 import com.vims.model.Customer;
+import com.vims.model.VehicleRegistration;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -46,6 +47,18 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer save(Customer customer) {
 	
 		return custdao.save(customer);
+	}
+
+	@Override
+	public String findByCustomer(String username, String password) {
+		// TODO Auto-generated method stub
+		return custdao.findByCustomer(username, password);
+	}
+
+	@Override
+	public List<VehicleRegistration> getVehicleDetails(String customer_id) {
+		// TODO Auto-generated method stub
+		return custdao.getVehicleDetails(customer_id);
 	}
 
 }

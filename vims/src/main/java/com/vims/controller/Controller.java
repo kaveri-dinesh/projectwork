@@ -43,15 +43,48 @@ import com.vims.service.VehicleService;
 @RequestMapping(value = "/vims")
 public class Controller {
 
+	//===========================================Admin=================================//
+	@PostMapping(value = "/admin/login/{username}/{password}")
+	public ResponseEntity<?> loginAdmin(@PathVariable("username") String username,@PathVariable("password") String password) {
+		
+		String cid=custService.findByCustomer(username, password);
+		
+		if(cid==null) {
+			return new ResponseEntity<String>("Customer not found", HttpStatus.OK);
+
+		}
+		return new ResponseEntity<String>(" login successful"+cid, HttpStatus.OK);
+	}
+	
 	// ========================================== Customer Controller ===========================================================
 	
 	@Autowired
 	private CustomerService custService;
 	List<Customer> customers = null;
 	Optional<Customer> customer=null;
+	List<VehicleRegistration>policies=null;
+	@PostMapping(value = "/customer/login/{username}/{password}")
+	public ResponseEntity<?> loginCustomer(@PathVariable("username") String username,@PathVariable("password") String password) {
+		
+		String cid=custService.findByCustomer(username, password);
+		
+		if(cid==null) {
+			return new ResponseEntity<String>("Customer not found", HttpStatus.OK);
+
+		}
+		return new ResponseEntity<String>(" login successful"+cid, HttpStatus.OK);
+	}
+	
 	
 	@PostMapping(value = "/customer")
 	public ResponseEntity<?> saveCustomer(@RequestBody Customer customer) {
+		
+		String user=customer.getUsername();
+		String pass=customer.getPassword();
+		String cid=custService.findByCustomer(user, pass);
+		if(cid!=null) {
+			return new ResponseEntity<String>("Customer already exists enter different username and password", HttpStatus.OK);
+		}
 		customer=custService.save(customer);
 		
 		if(customer==null) {
@@ -89,12 +122,23 @@ public class Controller {
 		return new ResponseEntity<Optional<Customer>> (customer,HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/customer/findallpolicies/{custId}")
+	public ResponseEntity<?> listAllPoliciesOfCustomer(@PathVariable("custId") String custId) {
+		policies=custService.getVehicleDetails(custId);
+	
+		if (policies.isEmpty()) {
+			return new ResponseEntity<String>("No vehicle policies available in DB", HttpStatus.OK);
+		}
+
+		return new ResponseEntity<List<VehicleRegistration>>(policies, HttpStatus.OK);
+	}
+	
 	@PutMapping(value = "/customer/update")
 	public ResponseEntity<?> updateProduct(@RequestBody Customer customer) {
 		customer=custService.save(customer);
 		
 		if(customer==null) {
-			return new ResponseEntity<String>("customer not saved", HttpStatus.OK);
+			return new ResponseEntity<String>("customer not updated", HttpStatus.OK);
 
 		}
 		
@@ -333,13 +377,16 @@ public class Controller {
 			}
 		}
 		List<RegisteredPay>list2=vehicleService.getRegisteredPayDetails(policy_id);
+		
 		for(RegisteredPay l:list2) {
 			if(l.getNext_due_date().after(max)) {
 				max=l.getNext_due_date();
 			}
+			
 		}
 		Calendar cal1=Calendar.getInstance();
 		cal1.setTime(max);
+		pay.setDue_date(max);
 		cal1.add(Calendar.MONTH, 1);
 		pay.setNext_due_date(cal1.getTime());
 		

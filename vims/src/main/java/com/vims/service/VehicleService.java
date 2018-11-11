@@ -19,8 +19,8 @@ public interface VehicleService {
 	public  Optional<VehicleRegistration> findById(String policy_id);
 	void deleteById(String policy_id);
 	public VehicleRegistration save(VehicleRegistration vehicle);
-	List<DirectPay> getDirectPayDetails(@Param("policy_id") String policy_id);
-	List<RegisteredPay> getRegisteredPayDetails(@Param("policy_id") String policy_id);
-	List<TheftClaim> getTheftClaimDetails(@Param("policy_id") String policy_id);
-	List<AccidentClaim> getAccidentClaimDetails(@Param("policy_id") String policy_id);
+	List<DirectPay> getDirectPayDetails( String policy_id);
+	List<RegisteredPay> getRegisteredPayDetails( String policy_id);
+	List<TheftClaim> getTheftClaimDetails( String policy_id);
+	List<AccidentClaim> getAccidentClaimDetails( String policy_id);
 }
