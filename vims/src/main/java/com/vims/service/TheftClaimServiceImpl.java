@@ -40,5 +40,11 @@ public class TheftClaimServiceImpl implements TheftClaimService{
 		// TODO Auto-generated method stub
 		return tcdao.save(tc);
 	}
+
+	@Override
+	public Optional<TheftClaim> findById(String claim_id) {
+		// TODO Auto-generated method stub
+		return tcdao.findById(claim_id);
+	}
 	
 }

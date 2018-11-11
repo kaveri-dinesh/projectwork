@@ -31,15 +31,19 @@ public class AccidentClaim {
 	@JoinColumn(name="policy_id")
 	private VehicleRegistration vehicle;
 	
+	
+
 	public AccidentClaim(String claim_id, String total_amount, String accident_type, String weightage,
-			String claim_amount, String status) {
-		
+			String claim_amount, String status, Customer cust, VehicleRegistration vehicle) {
+		super();
 		this.claim_id = claim_id;
 		this.total_amount = total_amount;
 		this.accident_type = accident_type;
 		this.weightage = weightage;
 		this.claim_amount = claim_amount;
 		this.status = status;
+		this.cust = cust;
+		this.vehicle = vehicle;
 	}
 
 	public AccidentClaim() {

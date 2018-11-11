@@ -1,6 +1,7 @@
 package com.vims.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,12 @@ public class CancellationServiceImpl implements CancellationService{
 	public Cancellation save(Cancellation c) {
 		// TODO Auto-generated method stub
 		return dao.save(c);
+	}
+
+	@Override
+	public Optional<Cancellation> findById(String cancelid) {
+		// TODO Auto-generated method stub
+		return dao.findById(cancelid);
 	}
 
 }

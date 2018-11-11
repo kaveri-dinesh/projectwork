@@ -108,9 +108,13 @@ public class TheftClaim {
 		this.vehicle = vehicle;
 	}
 
+	
+	
+	
+	
 	public TheftClaim(String claim_id, String total_amount, Date theft_date, Date complaint_date, String fir_number,
-			String claim_amount, String status) {
-
+			String claim_amount, String status, Customer cust, VehicleRegistration vehicle) {
+		super();
 		this.claim_id = claim_id;
 		this.total_amount = total_amount;
 		this.theft_date = theft_date;
@@ -118,10 +122,10 @@ public class TheftClaim {
 		this.fir_number = fir_number;
 		this.claim_amount = claim_amount;
 		this.status = status;
+		this.cust = cust;
+		this.vehicle = vehicle;
 	}
-	
-	
-	
+
 	public TheftClaim() {
 	
 	}

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.vims.dao.AccidentClaimdao;
 import com.vims.model.AccidentClaim;
+import com.vims.model.TheftClaim;
 @Service
 public class AccidentClaimImpl implements AccidentClaimService{
 @Autowired 
@@ -41,6 +42,8 @@ private AccidentClaimdao acdao;
 		// TODO Auto-generated method stub
 		return acdao.save(ac);
 	}
+
+	
 
 	
 }

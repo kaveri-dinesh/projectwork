@@ -35,23 +35,34 @@ public class VehicleRegistration {
 	private String price;
 	private String premium_amount;
 	
-	
-	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_id")
 	private Customer cust;
 	
-	
-	
-	
-	
-	
-	
+	public VehicleRegistration(String policy_id, String vehicle_owner, String vehicle_state, String vehicle_type,
+			String manufacturer, String model, String vehicle_class, String engine_number, String make_year,
+			String registering_location, Date date_of_purchase, String price, String premium_amount, Customer cust) {
+		super();
+		this.policy_id = policy_id;
+		this.vehicle_owner = vehicle_owner;
+		this.vehicle_state = vehicle_state;
+		this.vehicle_type = vehicle_type;
+		this.manufacturer = manufacturer;
+		this.model = model;
+		this.vehicle_class = vehicle_class;
+		this.engine_number = engine_number;
+		this.make_year = make_year;
+		this.registering_location = registering_location;
+		this.date_of_purchase = date_of_purchase;
+		this.price = price;
+		this.premium_amount = premium_amount;
+		this.cust = cust;
+	}
 	public Customer getCust() {
 		return cust;
 	}
-	public void setCust(Customer cust) {
-		this.cust = cust;
+	public void setCust(Customer c) {
+		this.cust = c;
 	}
 	public String getPolicy_id() {
 		return policy_id;
@@ -131,30 +142,6 @@ public class VehicleRegistration {
 	public void setPremium_amount(String premium_amount) {
 		this.premium_amount = premium_amount;
 	}
-	
-	
-	
-	
-	public VehicleRegistration(String policy_id, String vehicle_owner, String vehicle_state, String vehicle_type,
-			String manufacturer, String model, String vehicle_class, String engine_number, String make_year,
-			String registering_location, Date date_of_purchase, String price, String premium_amount) {
-	
-		this.policy_id = policy_id;
-		this.vehicle_owner = vehicle_owner;
-		this.vehicle_state = vehicle_state;
-		this.vehicle_type = vehicle_type;
-		this.manufacturer = manufacturer;
-		this.model = model;
-		this.vehicle_class = vehicle_class;
-		this.engine_number = engine_number;
-		this.make_year = make_year;
-		this.registering_location = registering_location;
-		this.date_of_purchase = date_of_purchase;
-		this.price = price;
-		this.premium_amount = premium_amount;
-		
-	}
-	
 	
 	
 	public VehicleRegistration() {

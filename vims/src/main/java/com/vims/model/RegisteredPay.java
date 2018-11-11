@@ -22,26 +22,17 @@ public class RegisteredPay {
 	private String premium_amount;
 	
 	private Date due_date;
-	private String paid_date;
+	private Date paid_date;
 	private String payment_mode;
 	private String pay_amount;
-	private String next_due_date;
+	private Date next_due_date;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="policy_id")
 	private VehicleRegistration vehicle;
 
-	public RegisteredPay(String payment_id, String premium_amount, Date due_date, String paid_date, String payment_mode,
-			String pay_amount, String next_due_date) {
-		
-		this.payment_id = payment_id;
-		this.premium_amount = premium_amount;
-		this.due_date = due_date;
-		this.paid_date = paid_date;
-		this.payment_mode = payment_mode;
-		this.pay_amount = pay_amount;
-		this.next_due_date = next_due_date;
-	}
+	
+	
 
 	public String getPayment_id() {
 		return payment_id;
@@ -67,13 +58,7 @@ public class RegisteredPay {
 		this.due_date = due_date;
 	}
 
-	public String getPaid_date() {
-		return paid_date;
-	}
-
-	public void setPaid_date(String paid_date) {
-		this.paid_date = paid_date;
-	}
+	
 
 	public String getPayment_mode() {
 		return payment_mode;
@@ -91,11 +76,35 @@ public class RegisteredPay {
 		this.pay_amount = pay_amount;
 	}
 
-	public String getNext_due_date() {
+	
+	
+
+	public RegisteredPay(String payment_id, String premium_amount, Date due_date, Date paid_date, String payment_mode,
+			String pay_amount, Date next_due_date, VehicleRegistration vehicle) {
+		super();
+		this.payment_id = payment_id;
+		this.premium_amount = premium_amount;
+		this.due_date = due_date;
+		this.paid_date = paid_date;
+		this.payment_mode = payment_mode;
+		this.pay_amount = pay_amount;
+		this.next_due_date = next_due_date;
+		this.vehicle = vehicle;
+	}
+
+	public Date getPaid_date() {
+		return paid_date;
+	}
+
+	public void setPaid_date(Date paid_date) {
+		this.paid_date = paid_date;
+	}
+
+	public Date getNext_due_date() {
 		return next_due_date;
 	}
 
-	public void setNext_due_date(String next_due_date) {
+	public void setNext_due_date(Date next_due_date) {
 		this.next_due_date = next_due_date;
 	}
 

@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vims.dao.VehicleDao;
+import com.vims.model.AccidentClaim;
+import com.vims.model.DirectPay;
+import com.vims.model.RegisteredPay;
+import com.vims.model.TheftClaim;
 import com.vims.model.VehicleRegistration;
 
 @Service
@@ -44,6 +48,30 @@ public class VehicleServiceImpl implements VehicleService{
 	public VehicleRegistration save(VehicleRegistration vehicle) {
 		// TODO Auto-generated method stub
 		return vehicledao.save(vehicle);
+	}
+
+	@Override
+	public List<DirectPay> getDirectPayDetails(String policy_id) {
+		// TODO Auto-generated method stub
+		return vehicledao.getDirectPayDetails(policy_id);
+	}
+
+	@Override
+	public List<RegisteredPay> getRegisteredPayDetails(String policy_id) {
+		// TODO Auto-generated method stub
+		return vehicledao.getRegisteredPayDetails(policy_id);
+	}
+
+	@Override
+	public List<TheftClaim> getTheftClaimDetails(String policy_id) {
+		// TODO Auto-generated method stub
+		return vehicledao.getTheftClaimDetails(policy_id);
+	}
+
+	@Override
+	public List<AccidentClaim> getAccidentClaimDetails(String policy_id) {
+		// TODO Auto-generated method stub
+		return vehicledao.getAccidentClaimDetails(policy_id);
 	}
 
 }

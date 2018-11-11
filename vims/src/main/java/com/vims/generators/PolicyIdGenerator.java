@@ -16,15 +16,11 @@ import org.hibernate.id.IdentifierGenerator;
 public class PolicyIdGenerator implements IdentifierGenerator{
 
 	public static int i=1;
-	public static String key;
+	public  String key;
 	
 	@Override
 	public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-	
 		
-
-		
-
 			FileReader fr=null;
 			FileWriter fw=null;
 			BufferedReader br=null;

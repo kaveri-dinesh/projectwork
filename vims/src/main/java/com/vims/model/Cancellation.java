@@ -100,20 +100,23 @@ public class Cancellation {
 		this.vehicle = vehicle;
 	}
 
-	public Cancellation(String cancel_id, String total_amount, String withdraw_amount, Date last_paid_date,
-			Date cancel_date, Date registered_date) {
 	
+	
+	
+	
+	public Cancellation(String cancel_id, String total_amount, String withdraw_amount, Date last_paid_date,
+			Date cancel_date, Date registered_date, Customer cust, VehicleRegistration vehicle) {
+		super();
 		this.cancel_id = cancel_id;
 		this.total_amount = total_amount;
 		this.withdraw_amount = withdraw_amount;
 		this.last_paid_date = last_paid_date;
 		this.cancel_date = cancel_date;
 		this.registered_date = registered_date;
+		this.cust = cust;
+		this.vehicle = vehicle;
 	}
-	
-	
-	
-	
+
 	public Cancellation() {
 
 	}

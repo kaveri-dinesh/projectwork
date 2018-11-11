@@ -14,8 +14,8 @@ import com.vims.model.VehicleRegistration;
 
 public interface CustomerDao extends JpaRepository<Customer, String> {
 	
-	@Query("from customer_registration cr where cr.customer_id like %:Customer_Id%")
-	List<Customer> findByCustomerId(@Param("Customer_Id") String customer_id);
+//	@Query("from customer_registration cr where cr.customer_id like %:Customer_Id%")
+//	Optional<Customer> findByCustomerId(@Param("Customer_Id") String customer_id);
 	
 	@Query("from vehicle_details vd where vd.cust.customer_id like %:Customer_Id%")
 	List<VehicleRegistration> getVehicleDetails(@Param("Customer_Id") String customer_id);

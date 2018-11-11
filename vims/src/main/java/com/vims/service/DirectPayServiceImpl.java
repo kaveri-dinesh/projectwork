@@ -43,4 +43,10 @@ public class DirectPayServiceImpl implements DirectPayService{
 		return null;
 	}
 
+	@Override
+	public double findTotalAmountByCustomerId(String customer_id) {
+		// TODO Auto-generated method stub
+		return directpaydao.findTotalAmountByCustomerId(customer_id);
+	}
+
 }

@@ -17,12 +17,12 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	
 	
-	@Override
-	public List<Customer> findByCustomerId(String customer_id) {
-		
-		return custdao.findByCustomerId(customer_id);
-		
-	}
+//	@Override
+//	public Optional<Customer> findByCustomerId(String customer_id) {
+//		
+//		return custdao.findByCustomerId(customer_id);
+//		
+//	}
 
 	@Override
 	public List<Customer> findAll() {

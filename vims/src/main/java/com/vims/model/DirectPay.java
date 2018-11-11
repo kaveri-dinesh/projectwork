@@ -23,27 +23,11 @@ public class DirectPay {
 	private Date due_date;
 	private Date payment_date;
 	private String pay_mode;
-	private String amount_paid;
+	private double amount_paid;
 	
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="policy_id")
 	private VehicleRegistration vehicle;
-
-	public DirectPay(String payment_id, String premium_amount, Date due_date, Date payment_date, String pay_mode,
-			String amount_paid) {
-		
-		this.payment_id = payment_id;
-		this.premium_amount = premium_amount;
-		this.due_date = due_date;
-		this.payment_date = payment_date;
-		this.pay_mode = pay_mode;
-		this.amount_paid = amount_paid;
-		
-	}
-
-	public DirectPay() {
-		
-	}
 
 	public String getPayment_id() {
 		return payment_id;
@@ -85,11 +69,11 @@ public class DirectPay {
 		this.pay_mode = pay_mode;
 	}
 
-	public String getAmount_paid() {
+	public double getAmount_paid() {
 		return amount_paid;
 	}
 
-	public void setAmount_paid(String amount_paid) {
+	public void setAmount_paid(double amount_paid) {
 		this.amount_paid = amount_paid;
 	}
 
@@ -100,6 +84,7 @@ public class DirectPay {
 	public void setVehicle(VehicleRegistration vehicle) {
 		this.vehicle = vehicle;
 	}
+
 
 	
 	
